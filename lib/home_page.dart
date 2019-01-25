@@ -8,6 +8,58 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
-    return Text('1 page');
+    return Scaffold(
+      body: ListView.builder(
+          itemCount: 10,
+          itemBuilder: (BuildContext context, int index) {
+            return _buildListItem(context, index);
+          }),
+      floatingActionButton:
+          FloatingActionButton(child: Icon(Icons.create), onPressed: () {
+            print('눌림');
+          }),
+    );
+  }
+
+  Widget _buildListItem(BuildContext context, int index) {
+    return InkWell(
+      onTap: () => print(index),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: <Widget>[
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Row(
+              children: <Widget>[
+                CircleAvatar(
+                  backgroundImage: NetworkImage(
+                      'https://cdn.pixabay.com/photo/2018/11/29/21/19/hamburg-3846525_1280.jpg'),
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(left: 8.0),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: <Widget>[
+                      Text(
+                        'a811219@gmail.com',
+                        style: TextStyle(fontWeight: FontWeight.bold),
+                      ),
+                      Text('오준석'),
+                    ],
+                  ),
+                )
+              ],
+            ),
+          ),
+          Image.network(
+              'https://cdn.pixabay.com/photo/2018/11/29/21/19/hamburg-3846525_1280.jpg'),
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Text(
+                '어쩌구 저쩌구어쩌구 저쩌구어쩌구 저쩌구어쩌구 저쩌구어쩌구 저쩌구어쩌구 저쩌구어쩌구 저쩌구어쩌구 저쩌구어쩌구 저쩌구'),
+          ),
+        ],
+      ),
+    );
   }
 }
