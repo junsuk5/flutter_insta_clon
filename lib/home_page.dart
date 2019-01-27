@@ -1,7 +1,5 @@
-import 'dart:io';
-
 import 'package:flutter/material.dart';
-import 'package:image_picker/image_picker.dart';
+import 'package:instagram_clon/create_page.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -9,49 +7,63 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  File galleryFile;
-
-//save the result of camera file
-  File cameraFile;
-
   @override
   Widget build(BuildContext context) {
-    //display image selected from gallery
-    imageSelectorGallery() async {
-      galleryFile = await ImagePicker.pickImage(
-        source: ImageSource.gallery,
-        // maxHeight: 50.0,
-        // maxWidth: 50.0,
-      );
-      print("You selected gallery image : " + galleryFile.path);
-      setState(() {});
-    }
-
-    return new Scaffold(
-      body: new Builder(
-        builder: (BuildContext context) {
-          return new Column(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
-            children: <Widget>[
-              new RaisedButton(
-                child: new Text('Select Image from Gallery'),
-                onPressed: imageSelectorGallery,
-              ),
-              displaySelectedFile(galleryFile),
-            ],
-          );
-        },
-      ),
+    return Scaffold(
+      body: ListView.builder(
+          itemCount: 10,
+          itemBuilder: (BuildContext context, int index) {
+            return _buildListItem(context, index);
+          }),
+      floatingActionButton: FloatingActionButton(
+          child: Icon(Icons.create),
+          onPressed: () {
+            print('눌림');
+            Navigator.of(context).push(MaterialPageRoute(
+                builder: (BuildContext context) => CreatePage()));
+          }),
     );
   }
 
-  Widget displaySelectedFile(File file) {
-    return new SizedBox(
-      height: 200.0,
-      width: 300.0,
-      child: file == null
-          ? new Text('Sorry nothing selected!!')
-          : new Image.file(file),
+  Widget _buildListItem(BuildContext context, int index) {
+    return InkWell(
+      onTap: () => print(index),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: <Widget>[
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Row(
+              children: <Widget>[
+                CircleAvatar(
+                  backgroundImage: NetworkImage(
+                      'https://cdn.pixabay.com/photo/2018/11/29/21/19/hamburg-3846525_1280.jpg'),
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(left: 8.0),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: <Widget>[
+                      Text(
+                        'a811219@gmail.com',
+                        style: TextStyle(fontWeight: FontWeight.bold),
+                      ),
+                      Text('오준석'),
+                    ],
+                  ),
+                )
+              ],
+            ),
+          ),
+          Image.network(
+              'https://cdn.pixabay.com/photo/2018/11/29/21/19/hamburg-3846525_1280.jpg'),
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Text(
+                '어쩌구 저쩌구어쩌구 저쩌구어쩌구 저쩌구어쩌구 저쩌구어쩌구 저쩌구어쩌구 저쩌구어쩌구 저쩌구어쩌구 저쩌구어쩌구 저쩌구'),
+          ),
+        ],
+      ),
     );
   }
 }
