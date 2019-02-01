@@ -3,12 +3,12 @@ import 'package:instagram_clon/account_page.dart';
 import 'package:instagram_clon/home_page.dart';
 import 'package:instagram_clon/search_page.dart';
 
-class TapPage extends StatefulWidget {
+class TabPage extends StatefulWidget {
   @override
-  _TapPageState createState() => _TapPageState();
+  _TabPageState createState() => _TabPageState();
 }
 
-class _TapPageState extends State<TapPage> {
+class _TabPageState extends State<TabPage> {
   int _selectedIndex = 0;
 
   final _pages = [
