@@ -1,11 +1,15 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 import 'package:instagram_clon/account_page.dart';
 import 'package:instagram_clon/home_page.dart';
 import 'package:instagram_clon/search_page.dart';
-import 'package:google_sign_in/google_sign_in.dart';
 
 class TabPage extends StatefulWidget {
+  final FirebaseUser user;
+
+  TabPage(this.user);
+
   @override
   _TabPageState createState() => _TabPageState();
 }
@@ -14,7 +18,13 @@ class _TabPageState extends State<TabPage> {
   int _selectedIndex = 0;
   final GoogleSignIn _googleSignIn = GoogleSignIn();
 
-  final _pages = [HomePage(), SearchPage(), AccountPage()];
+  List _pages;
+
+  @override
+  void initState() {
+    super.initState();
+    _pages = [HomePage(), SearchPage(), AccountPage(widget.user)];
+  }
 
   @override
   Widget build(BuildContext context) {

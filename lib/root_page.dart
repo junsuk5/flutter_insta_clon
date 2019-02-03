@@ -24,7 +24,7 @@ class _RootPageState extends State<RootPage> {
           return LoadingPage();
         } else {
           if (snapshot.hasData) {
-            return TabPage();
+            return TabPage(snapshot.data);
           }
           return LoginPage();
         }

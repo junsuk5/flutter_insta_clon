@@ -35,7 +35,7 @@ class _LoginPageState extends State<LoginPage> {
                 _handleSignIn().then((user) {
                   print('유저: ' + user.toString());
                   Navigator.pushReplacement(context,
-                      MaterialPageRoute(builder: (context) => (TabPage())));
+                      MaterialPageRoute(builder: (context) => (TabPage(user))));
                 });
               },
             ),
