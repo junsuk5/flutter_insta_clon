@@ -14,16 +14,18 @@ class _LoginPageState extends State<LoginPage> {
 
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: RaisedButton(
-        onPressed: () {
-          _handleSignIn().then((user) {
-            print('유저: ' + user.toString());
-            Navigator.pushReplacement(
-                context, MaterialPageRoute(builder: (context) => (TabPage())));
-          });
-        },
-        child: Text('Google SignIn'),
+    return Scaffold(
+      body: Center(
+        child: RaisedButton(
+          onPressed: () {
+            _handleSignIn().then((user) {
+              print('유저: ' + user.toString());
+              Navigator.pushReplacement(context,
+                  MaterialPageRoute(builder: (context) => (TabPage())));
+            });
+          },
+          child: Text('Google SignIn'),
+        ),
       ),
     );
   }
