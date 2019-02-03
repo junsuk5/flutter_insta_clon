@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:instagram_clon/detail_post_page.dart';
 
 class SearchPage extends StatefulWidget {
   @override
@@ -34,10 +35,22 @@ class _SearchPageState extends State<SearchPage> {
   }
 
   Widget _buildListItem(context, index) {
-    return InkWell(
-      child: Image.network(
-        'https://cdn.pixabay.com/photo/2018/11/29/21/19/hamburg-3846525_1280.jpg',
-        fit: BoxFit.cover,
+    return Hero(
+      tag: 'picture$index',
+      child: Material(
+        color: Colors.transparent,
+        child: InkWell(
+          onTap: () {
+            Navigator.push(context,
+                MaterialPageRoute(builder: (BuildContext context) {
+              return DetailPostPage(tag: 'picture$index');
+            }));
+          },
+          child: Image.network(
+            'https://cdn.pixabay.com/photo/2018/11/29/21/19/hamburg-3846525_1280.jpg',
+            fit: BoxFit.cover,
+          ),
+        ),
       ),
     );
   }
