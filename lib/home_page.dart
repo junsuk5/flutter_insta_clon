@@ -23,6 +23,7 @@ class _HomePageState extends State<HomePage> {
             return _buildListItem(context, index);
           }),
       floatingActionButton: FloatingActionButton(
+          backgroundColor: Colors.blueAccent,
           child: Icon(Icons.create),
           onPressed: () {
             print('눌림');

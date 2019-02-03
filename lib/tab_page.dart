@@ -29,7 +29,7 @@ class _TabPageState extends State<TabPage> {
     return Scaffold(
       body: _pages[_selectedIndex],
       bottomNavigationBar: BottomNavigationBar(
-        fixedColor: Colors.blue,
+        fixedColor: Colors.black,
         items: <BottomNavigationBarItem>[
           BottomNavigationBarItem(icon: Icon(Icons.home), title: Text('Home')),
           BottomNavigationBarItem(

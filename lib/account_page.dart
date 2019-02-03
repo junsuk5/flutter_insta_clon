@@ -36,8 +36,11 @@ class _AccountPageState extends State<AccountPage> {
                       SizedBox(
                         width: 80.0,
                         height: 80.0,
-                        child: CircleAvatar(
-                          backgroundImage: NetworkImage(widget.user.photoUrl),
+                        child: GestureDetector(
+                          onTap: () => print('이미지 클릭'),
+                          child: CircleAvatar(
+                            backgroundImage: NetworkImage(widget.user.photoUrl),
+                          ),
                         ),
                       ),
                       Container(
