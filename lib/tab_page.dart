@@ -1,6 +1,5 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:google_sign_in/google_sign_in.dart';
 import 'package:instagram_clon/account_page.dart';
 import 'package:instagram_clon/home_page.dart';
 import 'package:instagram_clon/search_page.dart';
@@ -16,7 +15,6 @@ class TabPage extends StatefulWidget {
 
 class _TabPageState extends State<TabPage> {
   int _selectedIndex = 0;
-  final GoogleSignIn _googleSignIn = GoogleSignIn();
 
   List _pages;
 
@@ -29,25 +27,9 @@ class _TabPageState extends State<TabPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        actions: <Widget>[
-          IconButton(
-            icon: Icon(Icons.exit_to_app),
-            color: Colors.black,
-            onPressed: () {
-              FirebaseAuth.instance.signOut();
-              _googleSignIn.signOut();
-            },
-          )
-        ],
-        backgroundColor: Colors.white,
-        title: Text(
-          'Insta Clon',
-          style: TextStyle(color: Colors.black),
-        ),
-      ),
       body: _pages[_selectedIndex],
       bottomNavigationBar: BottomNavigationBar(
+        fixedColor: Colors.blue,
         items: <BottomNavigationBarItem>[
           BottomNavigationBarItem(icon: Icon(Icons.home), title: Text('Home')),
           BottomNavigationBarItem(
