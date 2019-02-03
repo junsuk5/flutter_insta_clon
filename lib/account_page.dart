@@ -47,14 +47,27 @@ class _AccountPageState extends State<AccountPage> {
                         width: 80.0,
                         height: 80.0,
                         alignment: Alignment.bottomRight,
-                        child: SizedBox(
-                          width: 25.0,
-                          height: 25.0,
-                          child: FloatingActionButton(
-                            backgroundColor: Colors.blue,
-                            onPressed: null,
-                            child: Icon(Icons.add),
-                          ),
+                        child: Stack(
+                          alignment: Alignment.center,
+                          children: <Widget>[
+                            SizedBox(
+                              width: 28.0,
+                              height: 28.0,
+                              child: FloatingActionButton(
+                                onPressed: null,
+                                backgroundColor: Colors.white,
+                              ),
+                            ),
+                            SizedBox(
+                              width: 25.0,
+                              height: 25.0,
+                              child: FloatingActionButton(
+                                backgroundColor: Colors.blue,
+                                onPressed: null,
+                                child: Icon(Icons.add),
+                              ),
+                            ),
+                          ],
                         ),
                       ),
                     ],
