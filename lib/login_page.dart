@@ -1,8 +1,11 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_signin_button/flutter_signin_button.dart';
 import 'package:google_sign_in/google_sign_in.dart';
+
 import 'tab_page.dart';
 
+// 폰트: https://lingojam.com/FontsForInstagram
 class LoginPage extends StatefulWidget {
   @override
   _LoginPageState createState() => _LoginPageState();
@@ -16,15 +19,27 @@ class _LoginPageState extends State<LoginPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Center(
-        child: RaisedButton(
-          onPressed: () {
-            _handleSignIn().then((user) {
-              print('유저: ' + user.toString());
-              Navigator.pushReplacement(context,
-                  MaterialPageRoute(builder: (context) => (TabPage())));
-            });
-          },
-          child: Text('Google SignIn'),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            Text(
+              '𝔦𝔫𝔰𝔱𝔞𝔤𝔯𝔞𝔪 𝔠𝔩𝔬𝔫',
+              style: TextStyle(fontSize: 50.0, fontWeight: FontWeight.bold),
+            ),
+            Container(
+              margin: EdgeInsets.all(50.0),
+            ),
+            SignInButton(
+              Buttons.Google,
+              onPressed: () {
+                _handleSignIn().then((user) {
+                  print('유저: ' + user.toString());
+                  Navigator.pushReplacement(context,
+                      MaterialPageRoute(builder: (context) => (TabPage())));
+                });
+              },
+            ),
+          ],
         ),
       ),
     );
