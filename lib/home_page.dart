@@ -1,7 +1,12 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:instagram_clon/create_page.dart';
 
 class HomePage extends StatefulWidget {
+  final FirebaseUser user;
+
+  HomePage(this.user);
+
   @override
   _HomePageState createState() => _HomePageState();
 }
@@ -28,7 +33,7 @@ class _HomePageState extends State<HomePage> {
           onPressed: () {
             print('눌림');
             Navigator.of(context).push(MaterialPageRoute(
-                builder: (BuildContext context) => CreatePage()));
+                builder: (BuildContext context) => CreatePage(widget.user)));
           }),
     );
   }

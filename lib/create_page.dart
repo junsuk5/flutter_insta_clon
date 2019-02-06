@@ -1,11 +1,16 @@
 import 'dart:io';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 
 class CreatePage extends StatefulWidget {
+  final FirebaseUser user;
+
+  CreatePage(this.user);
+
   @override
   _CreatePageState createState() => _CreatePageState();
 }
@@ -58,7 +63,10 @@ class _CreatePageState extends State<CreatePage> {
                   doc.setData({
                     'id': doc.documentID,
                     'photoUrl': uri.toString(),
-                    'contents': textEditingController.text
+                    'contents': textEditingController.text,
+                    'email': widget.user.email,
+                    'displayName': widget.user.displayName,
+                    'userPhotoUrl': widget.user.photoUrl
                   });
                 });
               });
@@ -66,14 +74,16 @@ class _CreatePageState extends State<CreatePage> {
           )
         ],
       ),
-      body: Column(
-        children: <Widget>[
-          _buildBody(),
-          TextField(
-            decoration: InputDecoration(hintText: '내용을 입력하세요'),
-            controller: textEditingController,
-          )
-        ],
+      body: SingleChildScrollView(
+        child: Column(
+          children: <Widget>[
+            _buildBody(),
+            TextField(
+              decoration: InputDecoration(hintText: '내용을 입력하세요'),
+              controller: textEditingController,
+            )
+          ],
+        ),
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: _getImage,

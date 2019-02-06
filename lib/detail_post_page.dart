@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
 class DetailPostPage extends StatefulWidget {
-  final String tag;
+  final dynamic document;
 
-  DetailPostPage({Key key, this.tag}) : super(key: key);
+  DetailPostPage({Key key, this.document}) : super(key: key);
 
   @override
   _DetailPostPageState createState() => _DetailPostPageState();
@@ -21,44 +21,44 @@ class _DetailPostPageState extends State<DetailPostPage> {
   }
 
   Widget _buildBody() {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: <Widget>[
-        Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: Row(
-            children: <Widget>[
-              CircleAvatar(
-                backgroundImage: NetworkImage(
-                    'https://cdn.pixabay.com/photo/2018/11/29/21/19/hamburg-3846525_1280.jpg'),
-              ),
-              Padding(
-                padding: const EdgeInsets.only(left: 8.0),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: <Widget>[
-                    Text(
-                      'a811219@gmail.com',
-                      style: TextStyle(fontWeight: FontWeight.bold),
-                    ),
-                    Text('오준석'),
-                  ],
+    return SingleChildScrollView(
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: <Widget>[
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Row(
+              children: <Widget>[
+                CircleAvatar(
+                  backgroundImage: NetworkImage(
+                      widget.document['userPhotoUrl']),
                 ),
-              )
-            ],
+                Padding(
+                  padding: const EdgeInsets.only(left: 8.0),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: <Widget>[
+                      Text(
+                        widget.document['email'],
+                        style: TextStyle(fontWeight: FontWeight.bold),
+                      ),
+                      Text(widget.document['displayName']),
+                    ],
+                  ),
+                )
+              ],
+            ),
           ),
-        ),
-        Hero(
-          tag: widget.tag,
-          child: Image.network(
-              'https://cdn.pixabay.com/photo/2018/11/29/21/19/hamburg-3846525_1280.jpg'),
-        ),
-        Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: Text(
-              '어쩌구 저쩌구어쩌구 저쩌구어쩌구 저쩌구어쩌구 저쩌구어쩌구 저쩌구어쩌구 저쩌구어쩌구 저쩌구어쩌구 저쩌구어쩌구 저쩌구'),
-        ),
-      ],
+          Hero(
+            tag: widget.document['photoUrl'],
+            child: Image.network(widget.document['photoUrl']),
+          ),
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Text(widget.document['contents']),
+          ),
+        ],
+      ),
     );
   }
 }

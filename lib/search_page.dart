@@ -50,7 +50,7 @@ class _SearchPageState extends State<SearchPage> {
           onTap: () {
             Navigator.push(context,
                 MaterialPageRoute(builder: (BuildContext context) {
-              return DetailPostPage(tag: document['photoUrl']);
+              return DetailPostPage(document: document);
             }));
           },
           child: Image.network(
