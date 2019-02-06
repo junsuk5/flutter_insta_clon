@@ -18,14 +18,19 @@ class _AccountPageState extends State<AccountPage> {
   int post = 0;
 
   @override
-  Widget build(BuildContext context) {
+  void initState() {
+    super.initState();
     Firestore.instance.collection('post').where('email', isEqualTo: widget.user.email)
         .getDocuments()
         .then((querySnapshot) {
-          setState(() {
-            post = querySnapshot.documents.length;
-          });
-        });
+      setState(() {
+        post = querySnapshot.documents.length;
+      });
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
     return Scaffold(appBar: _buildAppBar(), body: _buildBody());
   }
 
