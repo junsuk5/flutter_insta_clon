@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:instagram_clon/detail_post_page.dart';
 
@@ -22,32 +23,38 @@ class _SearchPageState extends State<SearchPage> {
   }
 
   Widget _buildBody() {
-    return GridView.builder(
-        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-            crossAxisCount: 3,
-            childAspectRatio: 1.0,
-            mainAxisSpacing: 1.0,
-            crossAxisSpacing: 1.0),
-        itemCount: 50,
-        itemBuilder: (BuildContext context, int index) {
-          return _buildListItem(context, index);
+    return StreamBuilder(
+        stream: Firestore.instance.collection('post').snapshots(),
+        builder: (_, AsyncSnapshot<QuerySnapshot> snapshot) {
+          var items = snapshot.data?.documents ?? [];
+
+          return GridView.builder(
+              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                  crossAxisCount: 3,
+                  childAspectRatio: 1.0,
+                  mainAxisSpacing: 1.0,
+                  crossAxisSpacing: 1.0),
+              itemCount: items.length,
+              itemBuilder: (BuildContext context, int index) {
+                return _buildListItem(context, items[index]);
+              });
         });
   }
 
-  Widget _buildListItem(context, index) {
+  Widget _buildListItem(context, document) {
     return Hero(
-      tag: 'picture$index',
+      tag: document['photoUrl'],
       child: Material(
         color: Colors.transparent,
         child: InkWell(
           onTap: () {
             Navigator.push(context,
                 MaterialPageRoute(builder: (BuildContext context) {
-              return DetailPostPage(tag: 'picture$index');
+              return DetailPostPage(tag: document['photoUrl']);
             }));
           },
           child: Image.network(
-            'https://cdn.pixabay.com/photo/2018/11/29/21/19/hamburg-3846525_1280.jpg',
+            document['photoUrl'],
             fit: BoxFit.cover,
           ),
         ),
