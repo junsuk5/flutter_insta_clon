@@ -25,7 +25,11 @@ class _SearchPageState extends State<SearchPage> {
   Widget _buildBody() {
     return StreamBuilder(
         stream: Firestore.instance.collection('post').snapshots(),
-        builder: (_, AsyncSnapshot<QuerySnapshot> snapshot) {
+        builder: (_, snapshot) {
+          if (!snapshot.hasData) {
+            return Center(child: CircularProgressIndicator());
+          }
+
           var items = snapshot.data?.documents ?? [];
 
           return GridView.builder(
