@@ -67,6 +67,9 @@ class _CreatePageState extends State<CreatePage> {
                     'email': widget.user.email,
                     'displayName': widget.user.displayName,
                     'userPhotoUrl': widget.user.photoUrl
+                  }).then((onValue) {
+                    // 완료 후 앞 화면으로 이동
+                    Navigator.pop(context);
                   });
                 });
               });
