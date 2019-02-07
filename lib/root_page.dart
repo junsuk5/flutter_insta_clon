@@ -5,14 +5,10 @@ import 'package:instagram_clon/loading_page.dart';
 import 'login_page.dart';
 import 'tab_page.dart';
 
-class RootPage extends StatefulWidget {
-  @override
-  _RootPageState createState() => _RootPageState();
-}
-
-class _RootPageState extends State<RootPage> {
+class RootPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    print('root_page created');
     return _handleCurrentScreen();
   }
 

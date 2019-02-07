@@ -23,6 +23,7 @@ class _SearchPageState extends State<SearchPage> {
   }
 
   Widget _buildBody() {
+    print('search_page created');
     return StreamBuilder(
         stream: Firestore.instance.collection('post').snapshots(),
         builder: (_, snapshot) {
