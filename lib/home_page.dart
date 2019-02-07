@@ -22,60 +22,95 @@ class _HomePageState extends State<HomePage> {
           style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
         ),
       ),
-      body: ListView.builder(
-          itemCount: 10,
-          itemBuilder: (BuildContext context, int index) {
-            return _buildListItem(context, index);
-          }),
-      floatingActionButton: FloatingActionButton(
-          backgroundColor: Colors.blueAccent,
-          child: Icon(Icons.create),
-          onPressed: () {
-            print('눌림');
-            Navigator.of(context).push(MaterialPageRoute(
-                builder: (BuildContext context) => CreatePage(widget.user)));
-          }),
+      body: _buildBody()
     );
   }
 
-  Widget _buildListItem(BuildContext context, int index) {
-    return InkWell(
-      onTap: () => print(index),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: <Widget>[
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Row(
-              children: <Widget>[
-                CircleAvatar(
-                  backgroundImage: NetworkImage(
-                      'https://cdn.pixabay.com/photo/2018/11/29/21/19/hamburg-3846525_1280.jpg'),
-                ),
-                Padding(
-                  padding: const EdgeInsets.only(left: 8.0),
+  Widget _buildBody() {
+    return Padding(
+      padding: const EdgeInsets.all(8.0),
+      child: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            Text(
+              'Instagram에 오신 것을 환영합니다',
+              style: TextStyle(fontSize: 24.0),
+            ),
+            Padding(padding: EdgeInsets.all(8.0)),
+            Text('사진과 동영상을 보려면 팔로우하세요.'),
+            Padding(padding: EdgeInsets.all(16.0)),
+            SizedBox(
+              width: 260.0,
+              child: Card(
+                elevation: 4.0,
+                child: Padding(
+                  padding: const EdgeInsets.all(8.0),
                   child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisSize: MainAxisSize.min,
                     children: <Widget>[
+                      SizedBox(
+                        width: 80.0,
+                        height: 80.0,
+                        child: CircleAvatar(
+                          backgroundImage: NetworkImage(widget.user.photoUrl),
+                        ),
+                      ),
+                      Padding(padding: EdgeInsets.all(8.0)),
                       Text(
-                        'a811219@gmail.com',
+                        widget.user.email,
                         style: TextStyle(fontWeight: FontWeight.bold),
                       ),
-                      Text('오준석'),
+                      Text(widget.user.displayName),
+                      Padding(padding: EdgeInsets.all(8.0)),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: <Widget>[
+                          SizedBox(
+                            width: 70.0,
+                            height: 70.0,
+                            child: Image.network(
+                                'https://cdn.pixabay.com/photo/2017/09/21/19/12/france-2773030_1280.jpg',
+                                fit: BoxFit.cover),
+                          ),
+                          Padding(
+                            padding: EdgeInsets.all(1.0),
+                          ),
+                          SizedBox(
+                            width: 70.0,
+                            height: 70.0,
+                            child: Image.network(
+                                'https://cdn.pixabay.com/photo/2017/06/21/05/42/fog-2426131_1280.jpg',
+                                fit: BoxFit.cover),
+                          ),
+                          Padding(
+                            padding: EdgeInsets.all(1.0),
+                          ),
+                          SizedBox(
+                            width: 70.0,
+                            height: 70.0,
+                            child: Image.network(
+                                'https://cdn.pixabay.com/photo/2019/02/04/20/07/flowers-3975556_1280.jpg',
+                                fit: BoxFit.cover),
+                          ),
+                        ],
+                      ),
+                      Padding(padding: EdgeInsets.all(4.0)),
+                      Text('Facebook 친구'),
+                      Padding(padding: EdgeInsets.all(4.0)),
+                      RaisedButton(
+                          color: Colors.blueAccent,
+                          textColor: Colors.white,
+                          child: Text('팔로우'),
+                          onPressed: () => print('팔로우 클릭')),
+                      Padding(padding: EdgeInsets.all(4.0))
                     ],
                   ),
-                )
-              ],
-            ),
-          ),
-          Image.network(
-              'https://cdn.pixabay.com/photo/2018/11/29/21/19/hamburg-3846525_1280.jpg'),
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Text(
-                '어쩌구 저쩌구어쩌구 저쩌구어쩌구 저쩌구어쩌구 저쩌구어쩌구 저쩌구어쩌구 저쩌구어쩌구 저쩌구어쩌구 저쩌구어쩌구 저쩌구'),
-          ),
-        ],
+                ),
+              ),
+            )
+          ],
+        ),
       ),
     );
   }
