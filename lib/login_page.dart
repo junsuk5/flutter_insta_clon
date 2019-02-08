@@ -23,8 +23,8 @@ class _LoginPageState extends State<LoginPage> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             Text(
-              '𝔦𝔫𝔰𝔱𝔞𝔤𝔯𝔞𝔪 𝔠𝔩𝔬𝔫',
-              style: TextStyle(fontSize: 50.0, fontWeight: FontWeight.bold),
+              'Instagram Clon',
+              style: TextStyle(fontSize: 40.0, fontWeight: FontWeight.bold),
             ),
             Container(
               margin: EdgeInsets.all(50.0),
