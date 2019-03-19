@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_signin_button/flutter_signin_button.dart';
@@ -33,9 +35,7 @@ class _LoginPageState extends State<LoginPage> {
               Buttons.Google,
               onPressed: () {
                 _handleSignIn().then((user) {
-                  print('유저: ' + user.toString());
-                  Navigator.pushReplacement(context,
-                      MaterialPageRoute(builder: (context) => (TabPage(user))));
+                  print(user);
                 });
               },
             ),
