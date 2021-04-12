@@ -2,15 +2,33 @@
 
 인스타그램 클론
 
-## Getting Started
+## Web 구성
+web 폴더 생성
+```
+flutter create .
+```
 
-This project is a starting point for a Flutter application.
+## Google SignIn 연동
+https://github.com/flutter/plugins/blob/master/packages/google_sign_in/google_sign_in_web/README.md#web-integration
 
-A few resources to get you started if this is your first Flutter project:
+### web/index.html 수정
+```
+<body>
+  <!-- 추가 -->
+  <script src="https://www.gstatic.com/firebasejs/7.20.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/7.20.0/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/7.20.0/firebase-firestore.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/7.20.0/firebase-storage.js"></script>
+```
+```
+<head>
+  <meta name="google-signin-client_id" content="[YOUR_GOOGLE_SIGN_IN_OAUTH_CLIENT_ID].apps.googleusercontent.com">
+```
 
-- [Lab: Write your first Flutter app](https://flutter.io/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.io/docs/cookbook)
+### Web 실행 방법
+```
+$ flutter run -d chrome --web-hostname localhost --web-port 7357 --web-renderer html
+```
 
-For help getting started with Flutter, view our 
-[online documentation](https://flutter.io/docs), which offers tutorials, 
-samples, guidance on mobile development, and a full API reference.
+### Web 개발 모드에서 이미지 보이게
+https://stackoverflow.com/questions/65653801/flutter-web-cant-load-network-image-from-another-domain
