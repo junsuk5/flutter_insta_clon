@@ -1,9 +1,8 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:instagram_clon/create_page.dart';
 
 class HomePage extends StatefulWidget {
-  final FirebaseUser user;
+  final User user;
 
   HomePage(this.user);
 
@@ -55,7 +54,7 @@ class _HomePageState extends State<HomePage> {
                             width: 80.0,
                             height: 80.0,
                             child: CircleAvatar(
-                              backgroundImage: NetworkImage(widget.user.photoUrl),
+                              backgroundImage: NetworkImage(widget.user.photoURL),
                             ),
                           ),
                           Padding(padding: EdgeInsets.all(8.0)),

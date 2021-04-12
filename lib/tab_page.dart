@@ -5,7 +5,7 @@ import 'package:instagram_clon/home_page.dart';
 import 'package:instagram_clon/search_page.dart';
 
 class TabPage extends StatefulWidget {
-  final FirebaseUser user;
+  final User user;
 
   TabPage(this.user);
 

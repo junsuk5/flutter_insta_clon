@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 
 class AccountPage extends StatefulWidget {
-  final FirebaseUser user;
+  final User user;
 
   AccountPage(this.user);
 
@@ -20,11 +20,11 @@ class _AccountPageState extends State<AccountPage> {
   @override
   void initState() {
     super.initState();
-    Firestore.instance.collection('post').where('email', isEqualTo: widget.user.email)
-        .getDocuments()
+    FirebaseFirestore.instance.collection('post').where('email', isEqualTo: widget.user.email)
+        .get()
         .then((querySnapshot) {
       setState(() {
-        post = querySnapshot.documents.length;
+        post = querySnapshot.docs.length;
       });
     });
   }
@@ -54,7 +54,7 @@ class _AccountPageState extends State<AccountPage> {
                         child: GestureDetector(
                           onTap: () => print('이미지 클릭'),
                           child: CircleAvatar(
-                            backgroundImage: NetworkImage(widget.user.photoUrl),
+                            backgroundImage: NetworkImage(widget.user.photoURL),
                           ),
                         ),
                       ),
