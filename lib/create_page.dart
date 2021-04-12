@@ -25,13 +25,14 @@ class _CreatePageState extends State<CreatePage> {
   }
 
   File _image;
+  final picker = ImagePicker();
 
   Future _getImage() async {
     print('클릭 되나');
-    var image = await ImagePicker.pickImage(source: ImageSource.gallery);
+    var image = await picker.getImage(source: ImageSource.gallery);
 
     setState(() {
-      _image = image;
+      _image = File(image.path);
     });
   }
 
