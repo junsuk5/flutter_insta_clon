@@ -30,8 +30,8 @@ class _DetailPostPageState extends State<DetailPostPage> {
             child: Row(
               children: <Widget>[
                 CircleAvatar(
-                  backgroundImage: NetworkImage(
-                      widget.document['userPhotoUrl']),
+                  backgroundImage:
+                      NetworkImage(widget.document['userPhotoUrl']),
                 ),
                 Padding(
                   padding: const EdgeInsets.only(left: 8.0),
