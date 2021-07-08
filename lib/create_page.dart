@@ -24,7 +24,7 @@ class _CreatePageState extends State<CreatePage> {
     super.dispose();
   }
 
-  File _image;
+  File? _image;
   final picker = ImagePicker();
 
   Future _getImage() async {
@@ -32,7 +32,7 @@ class _CreatePageState extends State<CreatePage> {
     var image = await picker.getImage(source: ImageSource.gallery);
 
     setState(() {
-      _image = File(image.path);
+      _image = File(image!.path);
     });
   }
 
@@ -76,7 +76,7 @@ class _CreatePageState extends State<CreatePage> {
         .child('${DateTime.now().millisecondsSinceEpoch}.png');
 
     final task = await firebaseStorageRef.putFile(
-        _image, SettableMetadata(contentType: 'image/png'));
+        _image!, SettableMetadata(contentType: 'image/png'));
 
     final uri = await task.ref.getDownloadURL();
 
@@ -95,6 +95,6 @@ class _CreatePageState extends State<CreatePage> {
   }
 
   Widget _buildBody() {
-    return _image == null ? Text('No Image') : Image.file(_image);
+    return _image == null ? Text('No Image') : Image.file(_image!);
   }
 }

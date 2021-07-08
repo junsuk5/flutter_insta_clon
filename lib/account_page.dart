@@ -54,7 +54,7 @@ class _AccountPageState extends State<AccountPage> {
                         child: GestureDetector(
                           onTap: () => print('이미지 클릭'),
                           child: CircleAvatar(
-                            backgroundImage: NetworkImage(widget.user.photoURL),
+                            backgroundImage: NetworkImage(widget.user.photoURL!),
                           ),
                         ),
                       ),
@@ -91,7 +91,7 @@ class _AccountPageState extends State<AccountPage> {
                     padding: EdgeInsets.all(8.0),
                   ),
                   Text(
-                    widget.user.displayName,
+                    widget.user.displayName!,
                     textAlign: TextAlign.center,
                     style:
                         TextStyle(fontSize: 18.0, fontWeight: FontWeight.bold),
@@ -123,7 +123,7 @@ class _AccountPageState extends State<AccountPage> {
     );
   }
 
-  Widget _buildAppBar() {
+  PreferredSizeWidget _buildAppBar() {
     return AppBar(
       actions: <Widget>[
         IconButton(
