@@ -5,8 +5,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_signin_button/flutter_signin_button.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 
-import 'tab_page.dart';
-
 // 폰트: https://lingojam.com/FontsForInstagram
 class LoginPage extends StatefulWidget {
   @override
@@ -14,8 +12,6 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
-  final GoogleSignIn _googleSignIn = GoogleSignIn();
-  final FirebaseAuth _auth = FirebaseAuth.instance;
 
   @override
   Widget build(BuildContext context) {
@@ -25,7 +21,7 @@ class _LoginPageState extends State<LoginPage> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             Text(
-              'Instagram Clon',
+              'Instagram Clone',
               style: TextStyle(fontSize: 40.0, fontWeight: FontWeight.bold),
             ),
             Container(
@@ -34,9 +30,7 @@ class _LoginPageState extends State<LoginPage> {
             SignInButton(
               Buttons.Google,
               onPressed: () {
-                _handleSignIn().then((user) {
-                  print(user);
-                });
+                signInWithGoogle();
               },
             ),
           ],
@@ -45,13 +39,20 @@ class _LoginPageState extends State<LoginPage> {
     );
   }
 
-  Future<FirebaseUser> _handleSignIn() async {
-    GoogleSignInAccount googleUser = await _googleSignIn.signIn();
-    GoogleSignInAuthentication googleAuth = await googleUser.authentication;
-    FirebaseUser user = (await _auth.signInWithCredential(
-        GoogleAuthProvider.getCredential(
-            idToken: googleAuth.idToken, accessToken: googleAuth.accessToken))).user;
-    print("signed in " + user.displayName);
-    return user;
+  Future<UserCredential> signInWithGoogle() async {
+    // Trigger the authentication flow
+    final GoogleSignInAccount? googleUser = await GoogleSignIn().signIn();
+
+    // Obtain the auth details from the request
+    final GoogleSignInAuthentication googleAuth = (await googleUser?.authentication)!;
+
+    // Create a new credential
+    final credential = GoogleAuthProvider.credential(
+      accessToken: googleAuth.accessToken,
+      idToken: googleAuth.idToken,
+    );
+
+    // Once signed in, return the UserCredential
+    return await FirebaseAuth.instance.signInWithCredential(credential);
   }
 }

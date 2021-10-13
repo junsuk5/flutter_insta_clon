@@ -7,7 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 
 class CreatePage extends StatefulWidget {
-  final FirebaseUser user;
+  final User user;
 
   CreatePage(this.user);
 
@@ -17,6 +17,7 @@ class CreatePage extends StatefulWidget {
 
 class _CreatePageState extends State<CreatePage> {
   final textEditingController = TextEditingController();
+  final ImagePicker _picker = ImagePicker();
 
   @override
   void dispose() {
@@ -24,14 +25,14 @@ class _CreatePageState extends State<CreatePage> {
     super.dispose();
   }
 
-  File _image;
+  File? _image;
 
   Future _getImage() async {
     print('클릭 되나');
-    var image = await ImagePicker.pickImage(source: ImageSource.gallery);
+    XFile? image = await _picker.pickImage(source: ImageSource.gallery);
 
     setState(() {
-      _image = image;
+      _image = File(image!.path);
     });
   }
 
@@ -44,7 +45,7 @@ class _CreatePageState extends State<CreatePage> {
           IconButton(
             icon: Icon(Icons.send),
             tooltip: '다음',
-            onPressed: () {
+            onPressed: () async {
               print('클릭');
 
               final firebaseStorageRef = FirebaseStorage.instance
@@ -52,21 +53,21 @@ class _CreatePageState extends State<CreatePage> {
                   .child('post')
                   .child('${DateTime.now().millisecondsSinceEpoch}.png');
 
-              final task = firebaseStorageRef.putFile(
-                  _image, StorageMetadata(contentType: 'image/png'));
+              final UploadTask task = firebaseStorageRef.putFile(
+                  _image!, SettableMetadata(contentType: 'image/png'));
 
-              task.onComplete.then((value) {
+              task.then((value) {
                 var downloadUrl = value.ref.getDownloadURL();
 
                 downloadUrl.then((uri) {
-                  var doc = Firestore.instance.collection('post').document();
-                  doc.setData({
-                    'id': doc.documentID,
+                  var doc = FirebaseFirestore.instance.collection('post').doc();
+                  doc.set({
+                    'id': doc.id,
                     'photoUrl': uri.toString(),
                     'contents': textEditingController.text,
                     'email': widget.user.email,
                     'displayName': widget.user.displayName,
-                    'userPhotoUrl': widget.user.photoUrl
+                    'userPhotoUrl': widget.user.photoURL,
                   }).then((onValue) {
                     // 완료 후 앞 화면으로 이동
                     Navigator.pop(context);
@@ -96,6 +97,6 @@ class _CreatePageState extends State<CreatePage> {
   }
 
   Widget _buildBody() {
-    return _image == null ? Text('No Image') : Image.file(_image);
+    return _image == null ? Text('No Image') : Image.file(_image!);
   }
 }

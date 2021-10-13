@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 class DetailPostPage extends StatefulWidget {
   final dynamic document;
 
-  DetailPostPage({Key key, this.document}) : super(key: key);
+  DetailPostPage({Key? key, this.document}) : super(key: key);
 
   @override
   _DetailPostPageState createState() => _DetailPostPageState();

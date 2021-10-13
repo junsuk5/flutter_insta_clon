@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 
 class AccountPage extends StatefulWidget {
-  final FirebaseUser user;
+  final User user;
 
   AccountPage(this.user);
 
@@ -20,18 +20,23 @@ class _AccountPageState extends State<AccountPage> {
   @override
   void initState() {
     super.initState();
-    Firestore.instance.collection('post').where('email', isEqualTo: widget.user.email)
-        .getDocuments()
+    FirebaseFirestore.instance
+        .collection('post')
+        .where('email', isEqualTo: widget.user.email)
+        .get()
         .then((querySnapshot) {
       setState(() {
-        post = querySnapshot.documents.length;
+        post = querySnapshot.docs.length;
       });
     });
   }
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(appBar: _buildAppBar(), body: _buildBody());
+    return Scaffold(
+      appBar: _buildAppBar(),
+      body: _buildBody(),
+    );
   }
 
   Widget _buildBody() {
@@ -54,7 +59,8 @@ class _AccountPageState extends State<AccountPage> {
                         child: GestureDetector(
                           onTap: () => print('이미지 클릭'),
                           child: CircleAvatar(
-                            backgroundImage: NetworkImage(widget.user.photoUrl),
+                            backgroundImage:
+                                NetworkImage(widget.user.photoURL!),
                           ),
                         ),
                       ),
@@ -91,7 +97,7 @@ class _AccountPageState extends State<AccountPage> {
                     padding: EdgeInsets.all(8.0),
                   ),
                   Text(
-                    widget.user.displayName,
+                    widget.user.displayName!,
                     textAlign: TextAlign.center,
                     style:
                         TextStyle(fontSize: 18.0, fontWeight: FontWeight.bold),
@@ -123,7 +129,7 @@ class _AccountPageState extends State<AccountPage> {
     );
   }
 
-  Widget _buildAppBar() {
+  PreferredSizeWidget _buildAppBar() {
     return AppBar(
       actions: <Widget>[
         IconButton(

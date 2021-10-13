@@ -1,9 +1,8 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:instagram_clon/create_page.dart';
 
 class HomePage extends StatefulWidget {
-  final FirebaseUser user;
+  final User user;
 
   HomePage(this.user);
 
@@ -15,15 +14,14 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Colors.white,
-        title: Text(
-          'Instagram Clon',
-          style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
+        appBar: AppBar(
+          backgroundColor: Colors.white,
+          title: Text(
+            'Instagram Clone',
+            style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
+          ),
         ),
-      ),
-      body: _buildBody()
-    );
+        body: _buildBody());
   }
 
   Widget _buildBody() {
@@ -55,15 +53,16 @@ class _HomePageState extends State<HomePage> {
                             width: 80.0,
                             height: 80.0,
                             child: CircleAvatar(
-                              backgroundImage: NetworkImage(widget.user.photoUrl),
+                              backgroundImage:
+                                  NetworkImage(widget.user.photoURL!),
                             ),
                           ),
                           Padding(padding: EdgeInsets.all(8.0)),
                           Text(
-                            widget.user.email,
+                            widget.user.email!,
                             style: TextStyle(fontWeight: FontWeight.bold),
                           ),
-                          Text(widget.user.displayName),
+                          Text(widget.user.displayName!),
                           Padding(padding: EdgeInsets.all(8.0)),
                           Row(
                             mainAxisAlignment: MainAxisAlignment.center,
@@ -100,9 +99,13 @@ class _HomePageState extends State<HomePage> {
                           Padding(padding: EdgeInsets.all(4.0)),
                           Text('Facebook 친구'),
                           Padding(padding: EdgeInsets.all(4.0)),
-                          RaisedButton(
-                              color: Colors.blueAccent,
-                              textColor: Colors.white,
+                          ElevatedButton(
+                              style: ElevatedButton.styleFrom(
+                                primary: Colors.blueAccent,
+                                padding: EdgeInsets.symmetric(
+                                    horizontal: 50, vertical: 20),
+                                textStyle: TextStyle(color: Colors.white),
+                              ),
                               child: Text('팔로우'),
                               onPressed: () => print('팔로우 클릭')),
                           Padding(padding: EdgeInsets.all(4.0))

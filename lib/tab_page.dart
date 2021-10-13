@@ -5,7 +5,7 @@ import 'package:instagram_clon/home_page.dart';
 import 'package:instagram_clon/search_page.dart';
 
 class TabPage extends StatefulWidget {
-  final FirebaseUser user;
+  final User user;
 
   TabPage(this.user);
 
@@ -16,7 +16,7 @@ class TabPage extends StatefulWidget {
 class _TabPageState extends State<TabPage> {
   int _selectedIndex = 0;
 
-  List _pages;
+  late List _pages;
 
   @override
   void initState() {
@@ -36,11 +36,11 @@ class _TabPageState extends State<TabPage> {
       bottomNavigationBar: BottomNavigationBar(
         fixedColor: Colors.black,
         items: <BottomNavigationBarItem>[
-          BottomNavigationBarItem(icon: Icon(Icons.home), title: Text('Home')),
+          BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
           BottomNavigationBarItem(
-              icon: Icon(Icons.search), title: Text('Search')),
+              icon: Icon(Icons.search), label: 'Search'),
           BottomNavigationBarItem(
-              icon: Icon(Icons.account_circle), title: Text('account')),
+              icon: Icon(Icons.account_circle), label: 'account'),
         ],
         currentIndex: _selectedIndex,
         onTap: _onItemTapped,
