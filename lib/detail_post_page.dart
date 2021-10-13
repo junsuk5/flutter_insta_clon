@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 class DetailPostPage extends StatefulWidget {
   final dynamic document;
 
-  DetailPostPage({Key? key, this.document}) : super(key: key);
+  const DetailPostPage({Key? key, this.document}) : super(key: key);
 
   @override
   _DetailPostPageState createState() => _DetailPostPageState();
@@ -14,7 +14,7 @@ class _DetailPostPageState extends State<DetailPostPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('둘러보기'),
+        title: const Text('둘러보기'),
       ),
       body: _buildBody(),
     );
@@ -40,7 +40,7 @@ class _DetailPostPageState extends State<DetailPostPage> {
                     children: <Widget>[
                       Text(
                         widget.document['email'],
-                        style: TextStyle(fontWeight: FontWeight.bold),
+                        style: const TextStyle(fontWeight: FontWeight.bold),
                       ),
                       Text(widget.document['displayName']),
                     ],

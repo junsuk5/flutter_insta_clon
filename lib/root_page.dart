@@ -6,6 +6,8 @@ import 'login_page.dart';
 import 'tab_page.dart';
 
 class RootPage extends StatelessWidget {
+  const RootPage({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     print('root_page created');
@@ -17,12 +19,12 @@ class RootPage extends StatelessWidget {
       stream: FirebaseAuth.instance.authStateChanges(),
       builder: (BuildContext context, AsyncSnapshot<User?> snapshot) {
         if (snapshot.connectionState == ConnectionState.waiting) {
-          return LoadingPage();
+          return const LoadingPage();
         } else {
           if (snapshot.hasData) {
             return TabPage(snapshot.data!);
           }
-          return LoginPage();
+          return const LoginPage();
         }
       },
     );

@@ -9,7 +9,7 @@ import 'package:image_picker/image_picker.dart';
 class CreatePage extends StatefulWidget {
   final User user;
 
-  CreatePage(this.user);
+  const CreatePage(this.user, {Key? key}) : super(key: key);
 
   @override
   _CreatePageState createState() => _CreatePageState();
@@ -40,10 +40,10 @@ class _CreatePageState extends State<CreatePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('새 게시물'),
+        title: const Text('새 게시물'),
         actions: <Widget>[
           IconButton(
-            icon: Icon(Icons.send),
+            icon: const Icon(Icons.send),
             tooltip: '다음',
             onPressed: () async {
               print('클릭');
@@ -83,7 +83,7 @@ class _CreatePageState extends State<CreatePage> {
           children: <Widget>[
             _buildBody(),
             TextField(
-              decoration: InputDecoration(hintText: '내용을 입력하세요'),
+              decoration: const InputDecoration(hintText: '내용을 입력하세요'),
               controller: textEditingController,
             )
           ],
@@ -91,12 +91,12 @@ class _CreatePageState extends State<CreatePage> {
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: _getImage,
-        child: Icon(Icons.add_a_photo),
+        child: const Icon(Icons.add_a_photo),
       ),
     );
   }
 
   Widget _buildBody() {
-    return _image == null ? Text('No Image') : Image.file(_image!);
+    return _image == null ? const Text('No Image') : Image.file(_image!);
   }
 }

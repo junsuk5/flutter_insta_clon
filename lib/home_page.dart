@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 class HomePage extends StatefulWidget {
   final User user;
 
-  HomePage(this.user);
+  const HomePage(this.user, {Key? key}) : super(key: key);
 
   @override
   _HomePageState createState() => _HomePageState();
@@ -16,7 +16,7 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
         appBar: AppBar(
           backgroundColor: Colors.white,
-          title: Text(
+          title: const Text(
             'Instagram Clone',
             style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
           ),
@@ -33,13 +33,13 @@ class _HomePageState extends State<HomePage> {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
-                Text(
+                const Text(
                   'Instagram에 오신 것을 환영합니다',
                   style: TextStyle(fontSize: 24.0),
                 ),
-                Padding(padding: EdgeInsets.all(8.0)),
-                Text('사진과 동영상을 보려면 팔로우하세요.'),
-                Padding(padding: EdgeInsets.all(16.0)),
+                const Padding(padding: EdgeInsets.all(8.0)),
+                const Text('사진과 동영상을 보려면 팔로우하세요.'),
+                const Padding(padding: EdgeInsets.all(16.0)),
                 SizedBox(
                   width: 260.0,
                   child: Card(
@@ -57,13 +57,13 @@ class _HomePageState extends State<HomePage> {
                                   NetworkImage(widget.user.photoURL!),
                             ),
                           ),
-                          Padding(padding: EdgeInsets.all(8.0)),
+                          const Padding(padding: EdgeInsets.all(8.0)),
                           Text(
                             widget.user.email!,
-                            style: TextStyle(fontWeight: FontWeight.bold),
+                            style: const TextStyle(fontWeight: FontWeight.bold),
                           ),
                           Text(widget.user.displayName!),
-                          Padding(padding: EdgeInsets.all(8.0)),
+                          const Padding(padding: EdgeInsets.all(8.0)),
                           Row(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: <Widget>[
@@ -74,7 +74,7 @@ class _HomePageState extends State<HomePage> {
                                     'https://cdn.pixabay.com/photo/2017/09/21/19/12/france-2773030_1280.jpg',
                                     fit: BoxFit.cover),
                               ),
-                              Padding(
+                              const Padding(
                                 padding: EdgeInsets.all(1.0),
                               ),
                               SizedBox(
@@ -84,7 +84,7 @@ class _HomePageState extends State<HomePage> {
                                     'https://cdn.pixabay.com/photo/2017/06/21/05/42/fog-2426131_1280.jpg',
                                     fit: BoxFit.cover),
                               ),
-                              Padding(
+                              const Padding(
                                 padding: EdgeInsets.all(1.0),
                               ),
                               SizedBox(
@@ -96,19 +96,19 @@ class _HomePageState extends State<HomePage> {
                               ),
                             ],
                           ),
-                          Padding(padding: EdgeInsets.all(4.0)),
-                          Text('Facebook 친구'),
-                          Padding(padding: EdgeInsets.all(4.0)),
+                          const Padding(padding: EdgeInsets.all(4.0)),
+                          const Text('Facebook 친구'),
+                          const Padding(padding: EdgeInsets.all(4.0)),
                           ElevatedButton(
                               style: ElevatedButton.styleFrom(
                                 primary: Colors.blueAccent,
-                                padding: EdgeInsets.symmetric(
+                                padding: const EdgeInsets.symmetric(
                                     horizontal: 50, vertical: 20),
-                                textStyle: TextStyle(color: Colors.white),
+                                textStyle: const TextStyle(color: Colors.white),
                               ),
-                              child: Text('팔로우'),
+                              child: const Text('팔로우'),
                               onPressed: () => print('팔로우 클릭')),
-                          Padding(padding: EdgeInsets.all(4.0))
+                          const Padding(padding: EdgeInsets.all(4.0))
                         ],
                       ),
                     ),

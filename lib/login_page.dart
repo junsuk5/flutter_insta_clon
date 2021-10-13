@@ -6,12 +6,8 @@ import 'package:flutter_signin_button/flutter_signin_button.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 
 // 폰트: https://lingojam.com/FontsForInstagram
-class LoginPage extends StatefulWidget {
-  @override
-  _LoginPageState createState() => _LoginPageState();
-}
-
-class _LoginPageState extends State<LoginPage> {
+class LoginPage extends StatelessWidget {
+  const LoginPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -20,12 +16,12 @@ class _LoginPageState extends State<LoginPage> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            Text(
+            const Text(
               'Instagram Clone',
               style: TextStyle(fontSize: 40.0, fontWeight: FontWeight.bold),
             ),
             Container(
-              margin: EdgeInsets.all(50.0),
+              margin: const EdgeInsets.all(50.0),
             ),
             SignInButton(
               Buttons.Google,

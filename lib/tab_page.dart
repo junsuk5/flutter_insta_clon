@@ -7,7 +7,7 @@ import 'package:instagram_clon/search_page.dart';
 class TabPage extends StatefulWidget {
   final User user;
 
-  TabPage(this.user);
+  const TabPage(this.user, {Key? key}) : super(key: key);
 
   @override
   _TabPageState createState() => _TabPageState();
@@ -24,7 +24,7 @@ class _TabPageState extends State<TabPage> {
     _pages = [
       HomePage(widget.user),
       SearchPage(widget.user),
-      AccountPage(widget.user)
+      AccountPage(user: widget.user),
     ];
   }
 
@@ -35,7 +35,7 @@ class _TabPageState extends State<TabPage> {
       body: _pages[_selectedIndex],
       bottomNavigationBar: BottomNavigationBar(
         fixedColor: Colors.black,
-        items: <BottomNavigationBarItem>[
+        items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
           BottomNavigationBarItem(
               icon: Icon(Icons.search), label: 'Search'),

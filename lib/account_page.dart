@@ -6,7 +6,7 @@ import 'package:google_sign_in/google_sign_in.dart';
 class AccountPage extends StatefulWidget {
   final User user;
 
-  AccountPage(this.user);
+  const AccountPage({Key? key, required this.user}) : super(key: key);
 
   @override
   _AccountPageState createState() => _AccountPageState();
@@ -41,7 +41,7 @@ class _AccountPageState extends State<AccountPage> {
 
   Widget _buildBody() {
     return Container(
-      padding: EdgeInsets.all(16.0),
+      padding: const EdgeInsets.all(16.0),
       child: Column(
         children: <Widget>[
           Row(
@@ -70,7 +70,7 @@ class _AccountPageState extends State<AccountPage> {
                         alignment: Alignment.bottomRight,
                         child: Stack(
                           alignment: Alignment.center,
-                          children: <Widget>[
+                          children: const <Widget>[
                             SizedBox(
                               width: 28.0,
                               height: 28.0,
@@ -93,14 +93,14 @@ class _AccountPageState extends State<AccountPage> {
                       ),
                     ],
                   ),
-                  Padding(
+                  const Padding(
                     padding: EdgeInsets.all(8.0),
                   ),
                   Text(
                     widget.user.displayName!,
                     textAlign: TextAlign.center,
                     style:
-                        TextStyle(fontSize: 18.0, fontWeight: FontWeight.bold),
+                        const TextStyle(fontSize: 18.0, fontWeight: FontWeight.bold),
                   )
                 ],
               ),
@@ -108,16 +108,16 @@ class _AccountPageState extends State<AccountPage> {
                 padding: const EdgeInsets.only(top: 8.0),
                 child: Text('$post\n게시물',
                     textAlign: TextAlign.center,
-                    style: TextStyle(fontSize: 18.0)),
+                    style: const TextStyle(fontSize: 18.0)),
               ),
-              Padding(
-                padding: const EdgeInsets.only(top: 8.0),
+              const Padding(
+                padding: EdgeInsets.only(top: 8.0),
                 child: Text('0\n팔로워',
                     textAlign: TextAlign.center,
                     style: TextStyle(fontSize: 18.0)),
               ),
-              Padding(
-                padding: const EdgeInsets.only(top: 8.0),
+              const Padding(
+                padding: EdgeInsets.only(top: 8.0),
                 child: Text('0\n팔로잉',
                     textAlign: TextAlign.center,
                     style: TextStyle(fontSize: 18.0)),
@@ -133,7 +133,7 @@ class _AccountPageState extends State<AccountPage> {
     return AppBar(
       actions: <Widget>[
         IconButton(
-          icon: Icon(Icons.exit_to_app),
+          icon: const Icon(Icons.exit_to_app),
           color: Colors.black,
           onPressed: () {
             FirebaseAuth.instance.signOut();
@@ -142,7 +142,7 @@ class _AccountPageState extends State<AccountPage> {
         )
       ],
       backgroundColor: Colors.white,
-      title: Text(
+      title: const Text(
         '𝔦𝔫𝔰𝔱𝔞𝔤𝔯𝔞𝔪 𝔠𝔩𝔬𝔫',
         style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
       ),

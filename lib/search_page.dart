@@ -7,7 +7,7 @@ import 'package:instagram_clon/detail_post_page.dart';
 class SearchPage extends StatefulWidget {
   final User user;
 
-  SearchPage(this.user);
+  const SearchPage(this.user, {Key? key}) : super(key: key);
 
   @override
   _SearchPageState createState() => _SearchPageState();
@@ -16,12 +16,13 @@ class SearchPage extends StatefulWidget {
 class _SearchPageState extends State<SearchPage> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(appBar: _buildAppBar() as PreferredSizeWidget?, body: _buildBody());
+    return Scaffold(
+        appBar: _buildAppBar() as PreferredSizeWidget?, body: _buildBody());
   }
 
   Widget _buildAppBar() {
     return AppBar(
-      title: Text(
+      title: const Text(
         '𝔦𝔫𝔰𝔱𝔞𝔤𝔯𝔞𝔪 𝔠𝔩𝔬𝔫',
         style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
       ),
@@ -35,13 +36,13 @@ class _SearchPageState extends State<SearchPage> {
           stream: FirebaseFirestore.instance.collection('post').snapshots(),
           builder: (_, snapshot) {
             if (!snapshot.hasData) {
-              return Center(child: CircularProgressIndicator());
+              return const Center(child: CircularProgressIndicator());
             }
 
             var items = snapshot.data?.docs ?? [];
 
             return GridView.builder(
-                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                     crossAxisCount: 3,
                     childAspectRatio: 1.0,
                     mainAxisSpacing: 1.0,
@@ -53,7 +54,7 @@ class _SearchPageState extends State<SearchPage> {
           }),
       floatingActionButton: FloatingActionButton(
           backgroundColor: Colors.blueAccent,
-          child: Icon(Icons.create),
+          child: const Icon(Icons.create),
           onPressed: () {
             print('눌림');
             Navigator.of(context).push(MaterialPageRoute(
