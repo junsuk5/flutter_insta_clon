@@ -31,9 +31,13 @@ class _CreatePageState extends State<CreatePage> {
     print('클릭 되나');
     XFile? image = await _picker.pickImage(source: ImageSource.gallery);
 
-    setState(() {
-      _image = File(image!.path);
-    });
+    if (image != null) {
+      setState(() {
+        _image = File(image!.path);
+      });
+    } else {
+      // 사진 미 선택 처리
+    }
   }
 
   @override
