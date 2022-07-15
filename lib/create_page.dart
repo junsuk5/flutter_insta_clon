@@ -33,7 +33,7 @@ class _CreatePageState extends State<CreatePage> {
 
     if (image != null) {
       setState(() {
-        _image = File(image!.path);
+        _image = File(image.path);
       });
     } else {
       // 사진 미 선택 처리

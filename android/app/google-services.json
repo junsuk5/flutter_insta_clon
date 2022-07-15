@@ -1,0 +1,159 @@
+{
+  "project_info": {
+    "project_number": "332098036926",
+    "firebase_url": "https://insta-clon-ff220.firebaseio.com",
+    "project_id": "insta-clon-ff220",
+    "storage_bucket": "insta-clon-ff220.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:332098036926:android:de3b091f21431f13726aef",
+        "android_client_info": {
+          "package_name": "com.example.flutter_guide"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "332098036926-m7jdei3nmllt53tr6r192p0hckjlct9k.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCuHjdsrgvsfbk5v5NPRFbw1pu9L1SU4pc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "332098036926-jife5tbp7br2s0kthop8vmpojqgjqsn3.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "332098036926-gcgunpue1h9tlgidfi70e4i8327nap7d.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.suwonsmartapp.instagramClon"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:332098036926:android:5d11b79e03a0808c",
+        "android_client_info": {
+          "package_name": "com.suwonsmartapp.instagramclon"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "332098036926-2r7lg4kkr8dij69m7c02rvojk1m5kjqg.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.suwonsmartapp.instagramclon",
+            "certificate_hash": "4d0d5475a14b011f5e4017ba147d11f65bac4bcc"
+          }
+        },
+        {
+          "client_id": "332098036926-e6g1v5pos8v0hjnn650e98nolqkdo4j7.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.suwonsmartapp.instagramclon",
+            "certificate_hash": "ddc4246fb2bbdb56f487d1b5f781b2c3c6b5d74d"
+          }
+        },
+        {
+          "client_id": "332098036926-p07558355lrr4nu69p6cn5c8ukir5ncf.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.suwonsmartapp.instagramclon",
+            "certificate_hash": "4fd07193e7b3e7ba88a297c06b72462daccfecfd"
+          }
+        },
+        {
+          "client_id": "332098036926-vuj99p5497rh5pritqaralobsdu5sd1n.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.suwonsmartapp.instagramclon",
+            "certificate_hash": "d6806c4cd7a36d55b4734e6eb45658ae015cde69"
+          }
+        },
+        {
+          "client_id": "332098036926-m7jdei3nmllt53tr6r192p0hckjlct9k.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCuHjdsrgvsfbk5v5NPRFbw1pu9L1SU4pc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "332098036926-jife5tbp7br2s0kthop8vmpojqgjqsn3.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "332098036926-gcgunpue1h9tlgidfi70e4i8327nap7d.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.suwonsmartapp.instagramClon"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:332098036926:android:2a441c5c3b9f1eec",
+        "android_client_info": {
+          "package_name": "dev.jsoh.instaclon"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "332098036926-gk7kaoloajof09i44pd6g3roqqpu2a47.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "dev.jsoh.instaclon",
+            "certificate_hash": "d6806c4cd7a36d55b4734e6eb45658ae015cde69"
+          }
+        },
+        {
+          "client_id": "332098036926-m7jdei3nmllt53tr6r192p0hckjlct9k.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCuHjdsrgvsfbk5v5NPRFbw1pu9L1SU4pc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "332098036926-jife5tbp7br2s0kthop8vmpojqgjqsn3.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "332098036926-gcgunpue1h9tlgidfi70e4i8327nap7d.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.suwonsmartapp.instagramClon"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
